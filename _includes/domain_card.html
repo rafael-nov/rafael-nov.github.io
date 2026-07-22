@@ -1,0 +1,25 @@
+{%- assign domain = include.domain -%}
+{%- assign domain_url = domain.url | relative_url -%}
+
+<section class="domain-card">
+  <h2><a href="{{ domain_url }}">{{ domain.title }}</a></h2>
+
+  {%- if domain.list_type == "projects" -%}
+    {%- include project_list.html
+      scope=domain.scope
+      limit=domain.limit
+      show_more=true
+      show_more_text="more →"
+      show_more_url=domain.url
+    -%}
+  {%- elsif domain.list_type == "posts" -%}
+    {%- include post_list.html
+      category="blog"
+      scope=domain.scope
+      limit=domain.limit
+      show_more=true
+      show_more_text="more →"
+      show_more_url=domain.url
+    -%}
+  {%- endif -%}
+</section>

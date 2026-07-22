@@ -1,0 +1,32 @@
+---
+layout: default
+---
+
+<header class="hub-header">
+  <h1><a href="{{ '/' | relative_url }}">{{ site.title }}</a></h1>
+</header>
+
+{%- if site.data.todos.items.size > 0 -%}
+  <hr class="hub-divider" data-content=" todo " />
+  <ul class="todo-list">
+    {%- for item in site.data.todos.items -%}
+      <li>
+        {%- if item.url -%}
+          <a href="{{ item.url | relative_url }}">{{ item.text }}</a>
+        {%- else -%}
+          {{ item.text }}
+        {%- endif -%}
+      </li>
+    {%- endfor -%}
+  </ul>
+{%- endif -%}
+
+{%- for section in site.data.domains.sections -%}
+  <hr class="hub-divider" data-content=" {{ section.title | downcase }} " />
+
+  <div class="hub-section-cards">
+    {%- for domain in section.domains -%}
+      {%- include domain_card.html domain=domain -%}
+    {%- endfor -%}
+  </div>
+{%- endfor -%}

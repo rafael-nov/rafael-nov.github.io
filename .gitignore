@@ -1,0 +1,49 @@
+# Jekyll build output
+_site/
+.sass-cache/
+.jekyll-cache/
+.jekyll-metadata
+
+# Bundler
+.bundle/
+vendor/
+Gemfile.lock
+
+# Ruby environment
+.ruby-version
+.ruby-gemset
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# IDE specific files
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Environment variables
+.env
+.env.*
+
+# Jekyll specific
+node_modules/
+.tmp
+.temp 
+
+# Terraform specific (archived under archive/terraform/)
+archive/terraform/*/.terraform/
+archive/terraform/*/.terraform.lock.hcl
+archive/terraform/*/terraform.tfstate
+archive/terraform/*/terraform.tfstate.backup
+archive/terraform/*/crash.log
+archive/terraform/*/.terraformrc
+archive/terraform/*/terraform.rc
+# Jektex cache
+.jektex-cache/

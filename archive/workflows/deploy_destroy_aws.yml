@@ -1,0 +1,104 @@
+name: Build & Deploy AWS
+
+on:
+  workflow_dispatch:
+    inputs:
+      live_time:
+        description: "Time in seconds to keep the infrastructure live before tearing down"
+        required: false
+        default: "60"  # default to 60 seconds; adjust as needed
+
+jobs:   
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 3.1
+
+      - name: Install Dependencies
+        run: |
+          gem install bundler
+          bundle install
+
+      - name: Build Jekyll Site
+        run: bundle exec jekyll build --destination _site
+
+      - name: List _site contents
+        run: |
+          echo "Listing contents of the _site directory:"
+          ls -la _site
+
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: site
+          path: _site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    env:
+      #AWS_REGION: eu-central-1
+      BUCKET_NAME: rafaelnovaisdev-prod  # Define your bucket name here
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v3
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: us-east-1
+
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v2
+        with:
+          terraform_version: 1.11  # Pin a version if you like
+
+      - name: Terraform Init
+        working-directory: terraform/deploy
+        run: terraform init
+          
+      - name: Terraform Plan
+        working-directory: terraform/deploy
+        run: terraform plan
+
+      - name: Terraform Apply
+        working-directory: terraform/deploy
+        run: terraform apply -auto-approve
+
+      - name: Download Build Artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: site
+          path: ./site
+
+      - name: Show Artifact Contents (for debugging)
+        run: |
+          echo "Listing \contents of the site artifact:"
+          ls -la site 
+
+      - name: Verify & Deploy Site to S3
+        run: |
+          if [ -d "site" ]; then
+            echo "Extracted artifact successfully. Deploying site to S3..."
+            aws s3 sync site s3://rafaelnovaisdev-prod --delete
+          else
+            echo "Error: The directory site does not exist after extraction. Skipping deployment."
+            exit 1
+          fi
+  
+      - name: Wait for specified live time
+        run: |
+          echo "Keeping infrastructure live for ${{ github.event.inputs.live_time }} seconds..."
+          sleep ${{ github.event.inputs.live_time }}
+
+      - name: Terraform Destroy
+        run: terraform destroy -auto-approve

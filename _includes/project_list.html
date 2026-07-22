@@ -1,0 +1,46 @@
+{%- assign projects = site.projects | sort: 'project_number' | reverse -%}
+
+{%- if include.scope -%}
+  {%- assign projects = projects | where: 'scope', include.scope -%}
+{%- endif -%}
+
+{%- if include.featured -%}
+  {%- assign projects = projects | where: 'featured', true -%}
+{%- endif -%}
+
+{%- assign projects = projects | where_exp: 'item', 'item.published != false' -%}
+{%- assign projects = projects | where_exp: 'item', 'item.visibility != "hidden"' -%}
+
+{%- if include.limit and projects.size > include.limit -%}
+  {%- assign limit_exceeded = true -%}
+{%- else -%}
+  {%- assign limit_exceeded = false -%}
+{%- endif -%}
+
+{%- if projects.size > 0 -%}
+  <ul class="projects-list">
+    {%- for project in projects limit: include.limit -%}
+      <li class="project-item">
+        <span class="project-number">{{ project.project_number }}</span>
+        <a href="{{ project.url | relative_url }}" class="project-link">
+          {% if site.theme_config.lowercase_titles == true %}
+            {{ project.title | downcase }}
+          {% else %}
+            {{ project.title }}
+          {% endif %}
+        </a>
+        {%- if project.studio -%}
+          <span class="scope-badge">[{{ project.studio }}]</span>
+        {%- endif -%}
+        {%- if project.status -%}
+          <span class="status-badge">[{{ project.status | upcase }}]</span>
+        {%- endif -%}
+      </li>
+    {%- endfor -%}
+    {%- if include.show_more and limit_exceeded -%}
+      <li><a href="{{ include.show_more_url }}">{{ include.show_more_text | default: "Show more..." }}</a></li>
+    {%- endif -%}
+  </ul>
+{%- else -%}
+  <p class="empty-list">Nothing here yet.</p>
+{%- endif -%}

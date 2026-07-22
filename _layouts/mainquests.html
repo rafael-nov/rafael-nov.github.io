@@ -1,0 +1,18 @@
+---
+layout: default
+---
+
+{%- include back_link.html -%}
+
+<header class="personal-info">
+  <h1><a href="{{ '/' | relative_url }}">{{ site.title }}</a></h1>
+</header>
+
+<section class="mainquests-intro">
+  <h2>👋 Hi</h2>
+  {%- for intro_item in site.data.profile.introduction -%}
+    <p>{{ intro_item }}</p>
+  {%- endfor -%}
+</section>
+
+{{ content }}

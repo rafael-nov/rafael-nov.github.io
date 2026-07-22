@@ -1,0 +1,24 @@
+sections:
+  - id: professional
+    title: Professional
+    domains:
+      - title: Mainquests
+        url: /mainquests/
+      - title: Projects
+        url: /projects/
+        list_type: projects
+        limit: 5
+
+  - id: sidequests
+    title: Sidequests
+    domains:
+      - title: Sidequests
+        url: /sidequests/
+
+  - id: personal
+    title: Personal
+    domains:
+      - title: Blog
+        url: /blog/
+        list_type: posts
+        limit: 5

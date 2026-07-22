@@ -1,0 +1,67 @@
+title: rafaelnovais.dev
+author: Rafael Novais
+description: Personal hub — work, projects, and sidequests.
+
+email: rafa@rafaelnovais.dev
+github_url: https://github.com/rafaelnovaisdev
+linkedin_url: https://www.linkedin.com/in/rafaelnovaisdev/
+url: https://rafaelnovais.dev
+baseurl: ""
+
+favicon: "favicon.ico"
+
+collections:
+  projects:
+    output: true
+    permalink: /projects/:path/
+    sort_by: project_number
+    sort_order: descending
+
+defaults:
+  - scope:
+      path: "_projects"
+      type: "projects"
+    values:
+      layout: project
+      category: project
+      scope: software
+      visibility: public
+  - scope:
+      path: "_posts"
+      type: "posts"
+    values:
+      layout: post
+
+theme_config:
+  appearance: "light"
+  back_home_text: "&lt; back"
+  date_format: "%d-%m-%Y"
+  show_description: false
+  lowercase_titles: true
+
+sass:
+  style: compressed
+
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+  - jektex
+
+jektex:
+  cache_dir: ".jektex-cache"
+  ignore: ["*.xml"]
+  silent: false
+  macros:
+    - ["\\Q", "\\mathbb{Q}"]
+    - ["\\C", "\\mathbb{C}"]
+
+exclude:
+  - archive/
+  - Gemfile
+  - Gemfile.lock
+  - Dockerfile
+  - docker-compose.yml
+  - README.md
+  - docs/
+  - vendor/
+  - node_modules/
