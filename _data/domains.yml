@@ -3,7 +3,9 @@ sections:
     title: Professional
     domains:
       - title: Mainquests
-        url: /mainquests/
+        url: /curriculum-vitae/
+        list_type: mainquests
+        limit: 1
       - title: Projects
         url: /projects/
         list_type: projects
@@ -14,6 +16,8 @@ sections:
     domains:
       - title: Sidequests
         url: /sidequests/
+        list_type: sidequests
+        limit: 5
 
   - id: personal
     title: Personal
@@ -21,4 +25,8 @@ sections:
       - title: Blog
         url: /blog/
         list_type: posts
+        limit: 5
+      - title: Socials
+        url: /socials/
+        list_type: socials
         limit: 5

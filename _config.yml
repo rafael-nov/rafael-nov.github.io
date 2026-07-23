@@ -1,6 +1,6 @@
 title: rafaelnovais.dev
 author: Rafael Novais
-description: Personal hub — work, projects, and sidequests.
+description: Personal hub for work, projects, and sidequests.
 
 email: rafa@rafaelnovais.dev
 github_url: https://github.com/rafaelnovaisdev
@@ -14,8 +14,6 @@ collections:
   projects:
     output: true
     permalink: /projects/:path/
-    sort_by: project_number
-    sort_order: descending
 
 defaults:
   - scope:
@@ -36,15 +34,14 @@ theme_config:
   appearance: "light"
   back_home_text: "&lt; back"
   date_format: "%d-%m-%Y"
-  show_description: false
-  lowercase_titles: true
+
+future: true
 
 sass:
   style: compressed
 
 plugins:
   - jekyll-feed
-  - jekyll-seo-tag
   - jektex
 
 jektex:

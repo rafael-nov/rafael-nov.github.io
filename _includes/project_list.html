@@ -22,17 +22,11 @@
     {%- for project in projects limit: include.limit -%}
       <li class="project-item">
         <span class="project-number">{{ project.project_number }}</span>
-        <a href="{{ project.url | relative_url }}" class="project-link">
-          {% if site.theme_config.lowercase_titles == true %}
-            {{ project.title | downcase }}
-          {% else %}
-            {{ project.title }}
-          {% endif %}
-        </a>
+        <a href="{{ project.url | relative_url }}" class="project-link">{{ project.title }}</a>
         {%- if project.studio -%}
           <span class="scope-badge">[{{ project.studio }}]</span>
         {%- endif -%}
-        {%- if project.status -%}
+        {%- if project.status and project.status != "Completed" and project.status != "Live" -%}
           <span class="status-badge">[{{ project.status | upcase }}]</span>
         {%- endif -%}
       </li>

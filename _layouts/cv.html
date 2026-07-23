@@ -5,8 +5,16 @@ layout: default
 {%-include back_link.html-%}
 
 <header class="personal-info">
-  <h1>{{ page.title }}</h1>
+  <h1>{{ page.personal_info.name | default: site.author }}</h1>
+  <p class="contact-email"><a href="mailto:{{ site.email }}">{{ site.email }}</a></p>
 </header>
+
+<section class="mainquests-intro">
+  <h2>👋 Hi</h2>
+  {%- for intro_item in site.data.profile.introduction -%}
+    <p>{{ intro_item }}</p>
+  {%- endfor -%}
+</section>
 
 <div class="cv-container">
 <h2 onclick="toggleSection('career-content', event)">

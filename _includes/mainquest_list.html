@@ -1,0 +1,37 @@
+{%- assign items = site.data.mainquests.items -%}
+
+{%- if include.limit and items.size > include.limit -%}
+  {%- assign limit_exceeded = true -%}
+{%- else -%}
+  {%- assign limit_exceeded = false -%}
+{%- endif -%}
+
+{%- if items.size > 0 -%}
+  <ul class="projects-list">
+    {%- for item in items limit: include.limit -%}
+      {%- if item.type == "email" -%}
+        {%- assign item_url = "mailto:" | append: site.email -%}
+        {%- assign item_external = false -%}
+      {%- elsif item.type == "linkedin" -%}
+        {%- assign item_url = site.linkedin_url -%}
+        {%- assign item_external = true -%}
+      {%- elsif item.type == "github" -%}
+        {%- assign item_url = site.github_url -%}
+        {%- assign item_external = true -%}
+      {%- else -%}
+        {%- assign item_url = item.url | relative_url -%}
+        {%- assign item_external = false -%}
+      {%- endif -%}
+      <li>
+        <a href="{{ item_url }}"{% if item_external %} target="_blank" rel="noopener noreferrer"{% endif %}>
+          {{ item.title }}
+        </a>
+      </li>
+    {%- endfor -%}
+    {%- if include.show_more and limit_exceeded -%}
+      <li><a href="{{ include.show_more_url }}">{{ include.show_more_text | default: "Show more..." }}</a></li>
+    {%- endif -%}
+  </ul>
+{%- else -%}
+  <p class="empty-list">Nothing here yet.</p>
+{%- endif -%}

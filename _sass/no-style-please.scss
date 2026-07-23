@@ -42,11 +42,25 @@ body {
 
 h2, h3, h4, h5, h6 { margin-top: 3rem; }
 
+/* When a heading directly follows another heading, tighten the gap. */
+h2 + h3, h3 + h4, h4 + h5, h5 + h6,
+h2 + h4, h3 + h5, h2 + h5 { margin-top: 1rem; }
+
 hr { margin: 2rem 0; }
 
 p { margin: 1rem 0; }
 
 li { margin: 0.4rem 0; }
+
+.premise-good {
+  color: #1a7f37;
+  font-weight: bold;
+}
+
+.premise-bad {
+  color: #b42318;
+  font-weight: bold;
+}
 
 *:target { background: rgb(113, 0, 243); }
 
@@ -101,11 +115,29 @@ img {
 // -------------- HUB -------------- //
 .hub-header {
   text-align: center;
-  margin-bottom: 1.5rem;
+  margin-bottom: 2rem;
 }
 
 .hub-header h1 {
   margin: 0;
+  line-height: 1.2;
+}
+
+.hub-header .contact-email {
+  margin: 0.75rem 0 0;
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.hub-header .contact-email a {
+  color: black;
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+}
+
+.hub-header .contact-email a:hover,
+.hub-header .contact-email a:focus-visible {
+  color: #666;
 }
 
 .hub-divider {
@@ -129,6 +161,27 @@ img {
 
 .mainquests-intro p {
   margin: 0.5rem 0 1.25rem;
+}
+
+.personal-info {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.personal-info h1 {
+  margin: 0;
+}
+
+.contact-email {
+  margin: 0.35rem 0 0;
+}
+
+.contact-links {
+  margin: 0.35rem 0 0;
+}
+
+.contact-links a + a {
+  margin-left: 1rem;
 }
 
 .domain-card {

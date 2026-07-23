@@ -12,10 +12,31 @@
       show_more_text="more →"
       show_more_url=domain.url
     -%}
+  {%- elsif domain.list_type == "sidequests" -%}
+    {%- include sidequest_list.html
+      limit=domain.limit
+      show_more=true
+      show_more_text="more →"
+      show_more_url=domain.url
+    -%}
+  {%- elsif domain.list_type == "mainquests" -%}
+    {%- include mainquest_list.html
+      limit=domain.limit
+      show_more=true
+      show_more_text="more →"
+      show_more_url=domain.url
+    -%}
   {%- elsif domain.list_type == "posts" -%}
     {%- include post_list.html
       category="blog"
       scope=domain.scope
+      limit=domain.limit
+      show_more=true
+      show_more_text="more →"
+      show_more_url=domain.url
+    -%}
+  {%- elsif domain.list_type == "socials" -%}
+    {%- include social_list.html
       limit=domain.limit
       show_more=true
       show_more_text="more →"

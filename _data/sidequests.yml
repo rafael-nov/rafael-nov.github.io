@@ -1,11 +1,9 @@
-# Things I like — no particular order. Optional url for a deeper page later.
-interests:
-  - name: surf
-    url: /surf/
-  - name: mountain biking
-    url: /mtb/
-  - name: sim racing
-    url: /racing/
-  - name: auto
-    url: /auto/
-
+items:
+  - number: "0003"
+    title: MTB
+  - number: "0002"
+    title: Surf
+  - number: "0001"
+    title: SimRacing
+  - number: "0000"
+    title: Auto

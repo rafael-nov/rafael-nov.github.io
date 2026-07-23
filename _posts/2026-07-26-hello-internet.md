@@ -2,7 +2,7 @@
 layout: post
 category: blog
 title: "Hello Internet 🌐"
-date: 2026-07-22
+date: 2026-07-26
 published: true
 ---
 

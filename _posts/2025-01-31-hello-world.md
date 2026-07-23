@@ -16,6 +16,4 @@ This website was set up using:
 - **Jekyll** with the **no-style-please** theme  
 - **Namecheap** for a custom dns domain  
 - **Zoho Mail** for email hosting (<rafa@rafaelnovais.dev>)
-- **Cursor IDE** and its AI models for coding, content, UI, and more  
-
----
+- **Cursor IDE** and its AI models for coding, content, UI, and more

@@ -1,11 +1,11 @@
 ---
 layout: project
-title: "Personal Website & Blog"
+title: "Personal Website"
 category: project
 project_number: "0000"
 start_date: 2025-01-15
-last_updated: 2025-07-14
-status: "In Progress"
+last_updated: 2026-07-23
+status: "Live"
 scope: software
 visibility: public
 featured: true
@@ -13,9 +13,7 @@ tech_stack: ["Jekyll", "GitHub Pages", "Namecheap", "Cloudflare", "Zoho Mail", "
 github_url: "https://github.com/rafaelnovaisdev/rafaelnovaisdev.github.io"
 ---
 
-## Hello World 🌍
-
-Welcome to **rafaelnovais.dev** — personal hub for professional work, studio builds, and sidequests.
+Welcome to **rafaelnovais.dev**. A personal hub for professional work, projects, and sidequests.
 
 ## How I Built This 🚀
 
@@ -36,7 +34,12 @@ This website was set up using:
 
 ---
 
-## Update #2 (2025-07-21)
+## Update #2 (2026-07-23)
 
-- Evolving the site into a multi-domain hub: work, studio, racing, and lab.
-- Projects now support `scope` (personal / studio / racing) and visibility tiers.
+Moved past the placeholder setup. The site is organized into a few clear zones:
+
+- **Professional** — mainquests (Curriculum Vitae + contact), and software projects
+- **Sidequests** — MTB, Surf, SimRacing, Auto (listed for now; pages later)
+- **Personal** — blog and socials (LinkedIn, GitHub)
+
+Also cleaned up old unused bits, fixed the content model (projects, posts, data files), and committed to keeping this updated over time.

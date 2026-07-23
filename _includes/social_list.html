@@ -1,0 +1,31 @@
+{%- assign items = site.data.socials.items -%}
+
+{%- if include.limit and items.size > include.limit -%}
+  {%- assign limit_exceeded = true -%}
+{%- else -%}
+  {%- assign limit_exceeded = false -%}
+{%- endif -%}
+
+{%- if items.size > 0 -%}
+  <ul class="projects-list">
+    {%- for item in items limit: include.limit -%}
+      {%- if item.type == "linkedin" -%}
+        {%- assign item_url = site.linkedin_url -%}
+      {%- elsif item.type == "github" -%}
+        {%- assign item_url = site.github_url -%}
+      {%- else -%}
+        {%- assign item_url = item.url -%}
+      {%- endif -%}
+      <li>
+        <a href="{{ item_url }}" target="_blank" rel="noopener noreferrer">
+          {{ item.title }}
+        </a>
+      </li>
+    {%- endfor -%}
+    {%- if include.show_more and limit_exceeded -%}
+      <li><a href="{{ include.show_more_url }}">{{ include.show_more_text | default: "Show more..." }}</a></li>
+    {%- endif -%}
+  </ul>
+{%- else -%}
+  <p class="empty-list">Nothing here yet.</p>
+{%- endif -%}

@@ -4,6 +4,7 @@ layout: default
 
 <header class="hub-header">
   <h1><a href="{{ '/' | relative_url }}">{{ site.title }}</a></h1>
+  <p class="contact-email">email: <a href="mailto:{{ site.email }}">{{ site.email }}</a></p>
 </header>
 
 {%- if site.data.todos.items.size > 0 -%}

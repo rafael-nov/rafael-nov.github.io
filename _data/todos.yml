@@ -1,10 +1,2 @@
 # Site TODOs — shown at the top of the index. Remove items when done.
-items:
-  - text: Write the self-host initiative project page
-    url: /projects/0001-self-host/
-  - text: Write the RCELO-SOFTWARE project page
-    url: /projects/0002-rcelo-software/
-  - text: Rework update #2 on the personal website & blog project (and fix its date)
-    url: /projects/0000-personal-website/
-  - text: Finalize the Hello Internet blog post
-    url: /blog/2026/07/22/hello-internet.html
+items: []

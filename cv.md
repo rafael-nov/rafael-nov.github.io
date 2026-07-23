@@ -1,13 +1,26 @@
 ---
 layout: cv
 title: Curriculum Vitae
-permalink: /cv/
+permalink: /curriculum-vitae/
 
 personal_info:
   name: Rafael Novais
   email: rafa@rafaelnovais.dev
 
 experience:
+  - company: CSG
+    role: Platform Engineer I
+    period: october 2025 - present
+    duration: 10 months
+    responsibilities:
+      - Manage infrastructure for a SaaS product across production and user acceptance testing environments.
+      - Use AWS and Terraform to provision and maintain environments, accounts, and platform services.
+      - Operate Windows Server systems, ELK and AWS OpenSearch clusters, and SQL databases.
+      - Manage project-level DNS, networking, Active Directory, and account provisioning.
+      - Manage product infrastructure access and security controls, coordinating with corporate security on reviews and certifications.
+      - Review infrastructure requests and advise product teams on architecture, security, and operational best practices.
+      - Work with core, systems, and level 1 support teams to troubleshoot issues and keep environments reliable.
+
   - company: Continental Engineering Services
     role: Software Engineer (Automation & Tools)
     period: september 2022 - may 2025
@@ -32,7 +45,7 @@ experience:
     duration: 7 months
     location: Porto e Região, Portugal
     responsibilities:
-      - L1 Support position involved in monitoring, troubleshooting, triage, and follow-up of incidents.
+      - L1 support position involved in monitoring, troubleshooting, triage, and follow-up of incidents.
       - Ensure day-to-day operations ran smoothly in the production and user acceptance testing environments.
       - Fulfilling user requests.
       - Carrying out routine operational tasks.
